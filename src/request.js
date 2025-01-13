@@ -3,7 +3,11 @@ import puppeteer from "puppeteer";
 
 export const sendConnectionRequests = async (data) => {
     console.log(data);
-    const browser = await puppeteer.launch({ headless: false });
+    const browser = await puppeteer.launch({
+        headless: false, 
+        defaultViewport: null, 
+        args: ["--start-maximized"],
+      });
     const page = await browser.newPage();
 
     try {
@@ -29,7 +33,7 @@ export const sendConnectionRequests = async (data) => {
                 await button.click();
                 console.log("Connection Sent.");
 
-                await page.waitForTimeout(Math.random() * 3000 + 2000);
+                // await page.waitForTimeout(Math.random() * 3000 + 2000);
             } catch (error) {
                 console.error("Error:", error.message);
             }
