@@ -1,5 +1,5 @@
 import express from 'express';
-import {sendRequest} from "./src/request.js";
+import {sendConnectionRequests} from "./src/request.js";
 
 const app = express();
 const port = process.env.PR_PORT || 3500;
@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
     res.render('main', { title: 'Main Page', message: 'Welcome to the Main Page!' });
 });
 app.post('/send-request', (req, res) => {
-    sendRequest(req.body);
+    sendConnectionRequests(req.body);
     console.log('Request received');
 });
 
@@ -30,5 +30,5 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(port, '0.0.0.0', () => {
-    console.log(`Server is running at http://localhost:${process.env.PR_PORT}`);
+    console.log(`Server is running at http://localhost:${port}`);
 });
