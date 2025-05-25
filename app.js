@@ -1,5 +1,5 @@
 import express from 'express';
-import {sendConnectionRequests} from "./src/request.js";
+import {sendConnectionRequests} from "./src/connection.js";
 
 const app = express();
 const port = process.env.PR_PORT || 3500;
